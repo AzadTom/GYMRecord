@@ -26,7 +26,7 @@ export const AllUser = ()=>{
 
     return(
         <section className="flex justify-center bg-black">
-        <div className="grid  gap-4 px-4  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-[1000px] w-full">{users && Array.isArray(users) && users.map((user)=>(<User user={user} />))}</div>
+        <div className="grid  gap-4 px-4  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-[1000px] w-full">{users && Array.isArray(users) && users.map((user)=>(<User key={user.rollno+user.year} user={user} />))}</div>
         </section>
         )
 

@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import React, { useState ,useEffect} from 'react'
 
-function page() {
+function Page() {
 
   
   
@@ -50,7 +50,7 @@ function page() {
   )
 }
 
-export default page
+export default Page;
 
 
 
