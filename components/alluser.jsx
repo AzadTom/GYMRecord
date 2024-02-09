@@ -1,4 +1,4 @@
-import { User } from "./user";
+import { FilterUser } from "./filter";
 
 const getAllUser  =async()=>{
 
@@ -17,11 +17,15 @@ export const AllUser = async()=>{
 
     const users  = await getAllUser();
 
+   
     return(
-        <section className="flex justify-center bg-black">
-        <div className="grid  gap-4 px-4  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-[1000px] w-full">{users && Array.isArray(users) && users.map((user)=>(<User key={user.rollno+user.year} user={user} />))}</div>
+        <section className="flex flex-col  items-center justify-center bg-black">
+         <FilterUser users={users} />
         </section>
         )
 
 
 }
+
+
+
