@@ -38,7 +38,7 @@ export const FilterUser  = ({users})=>{
         <button className="bg-white text-black px-4 py-1" onClick={()=> setFilter(!filter)}> Year &#9660;</button>
          {filter && <div className="absolute  top-8 w-full bg-white text-black px-2 py-1 text-center cursor-pointer">
            <h2 onClick={()=> onFilter()}>All year</h2>
-           {uniqueYears && uniqueYears.map((year)=>( <h2 onClick={()=> onFilter(year)}>{year}</h2> ))}
+           {uniqueYears && uniqueYears.map((year,index)=>( <h2 key={year+index} onClick={()=> onFilter(year)}>{year}</h2> ))}
          </div>}
         </div>
       </div>
