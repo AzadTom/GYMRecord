@@ -29,7 +29,7 @@ const Individual =({user})=>{
           <h2>{user.year}</h2>
       </div>}
       {user && <div className='grid gap-4 px-4 py-2  grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
-        {Object.keys(user).slice(5).map((key,index)=>(<Month  key={key+index} user={user} currentkey={key} index={index} rollno={user.rollno} fees={user.fees}/>))}
+        {Object.keys(user).slice(5).map((key,index)=>(<Month  key={key+index} user={user} currentkey={key} index={index} rollno={user.rollno} fees={user.fees} year={user.year}/>))}
       </div> }
     </div>
     )
@@ -38,7 +38,7 @@ const Individual =({user})=>{
 
 
 
-const Month = ({currentkey,index,user,rollno,fees}) => {
+const Month = ({currentkey,index,user,rollno,fees,year}) => {
 
     const [loading,setLoading] = useState(false);
     const [amount,setAmount] = useState("");
@@ -55,7 +55,7 @@ const Month = ({currentkey,index,user,rollno,fees}) => {
         try {
   
             
-        const year = new Date().getFullYear();            
+                
         const data = new FormData();
         data.append("rollno",rollno);
         data.append("year",year);
@@ -90,13 +90,13 @@ const Month = ({currentkey,index,user,rollno,fees}) => {
   
   
     return (
-        <li className=" border border-white px-4 py-4 flex flex-col gap-1">
+        <li className="bg-white text-black px-4 py-4 flex flex-col gap-1">
             <h2 className="flex justify-between text-xs sm:text-xl"><span>{currentkey}</span></h2>
             <span className='text-xs sm:text-xl'>{user[currentkey]}</span>
             {!user[currentkey] && <form onSubmit={handlefees} className="flex flex-col gap-1 sm:gap-2 " id="month">    
                 {!loading && <>
-                  <input type="text" className="px-2 py-1 sm:px-4 sm:py-2 text-black w-full text-xs sm:text-xl" placeholder={fees} name="amount" value={amount} onChange={(e)=> setAmount(e.target.value)}  required />
-                <button className="bg-white text-black p-1 text-xs sm:text-xl" type="submit">submit</button>
+                  <input type="text" className="px-2 py-1 sm:px-4 sm:py-2 text-black border border-black w-full text-xs sm:text-xl" placeholder={fees} name="amount" value={amount} onChange={(e)=> setAmount(e.target.value)}  required />
+                <button className="bg-black text-white p-1 text-xs sm:text-xl" type="submit">submit</button>
                 </>}
             </form>}
             {loading &&<h2 className='w-full px-4 py-2 text-center text-xs sm:text-xl'>Loading</h2> }
