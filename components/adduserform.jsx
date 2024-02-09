@@ -1,9 +1,12 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export const AddUserForm = ({openUserForm}) => {
 
     const[loading,setLoading] = useState(false);
+
+    const router  = useRouter();
 
     const handleSubmitForm = async(e)=>{
 
@@ -22,8 +25,10 @@ export const AddUserForm = ({openUserForm}) => {
 
         if(response.ok)
         {
+            
             setLoading(false);
             openUserForm();
+            router.refresh();
            
         }
         else
@@ -39,8 +44,8 @@ export const AddUserForm = ({openUserForm}) => {
         <>
             {<div className="bg-white text-black p-4 flex flex-col gap-4  fixed bottom-0 left-0 right-0">
 
-                <div className="flex justify-between  font-semibold">
-                    <h2 className="bg-black text-white px-4 py-1">ADD USER</h2>
+                <div className="flex justify-end  font-semibold">
+                    
                     <button className="border border-black px-4 py-1" onClick={openUserForm}>Cancel</button>
                 </div>
 

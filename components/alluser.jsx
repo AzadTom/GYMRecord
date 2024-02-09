@@ -1,28 +1,21 @@
-"use client";
-
-import { useState,useEffect } from "react";
 import { User } from "./user";
 
-export const AllUser = ()=>{
+const getAllUser  =async()=>{
+
+  
+  const response = await fetch("https://script.google.com/macros/s/AKfycbzkaCfJTvj8fh4XNO0XQ7Q41uNNRwvSJnLzoT978v1v8o90jIOAAIi9uPfvKnoc-AVl/exec",{
+    cache:"no-cache"
+  });
+  const users  = await response.json();
+  return users.data;
+  
+} 
 
 
 
-    const[users,setUsers]= useState([]);
+export const AllUser = async()=>{
 
-
-    useEffect(()=>{
-
-      const getAllUser  =async()=>{
-
-        const response = await fetch("https://script.google.com/macros/s/AKfycbzkaCfJTvj8fh4XNO0XQ7Q41uNNRwvSJnLzoT978v1v8o90jIOAAIi9uPfvKnoc-AVl/exec");
-        const users  = await response.json();
-        setUsers(users.data);
-
-      }  
-      getAllUser();
-
-    },[users])
-
+    const users  = await getAllUser();
 
     return(
         <section className="flex justify-center bg-black">
