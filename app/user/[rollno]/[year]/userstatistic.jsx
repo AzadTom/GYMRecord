@@ -25,7 +25,7 @@ const Individual =({user})=>{
           <h2>{user.rollno}</h2>
           <h2>{user.name}</h2>
           <h2>{user.gender}</h2>
-          <h2>{user.fees}</h2>
+          <h2>Rs.{user.fees}</h2>
           <h2>{user.year}</h2>
       </div>}
       {user && <div className='grid gap-4 px-4 py-2  grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
@@ -92,7 +92,8 @@ const Month = ({currentkey,index,user,rollno,fees,year}) => {
     return (
         <li className="bg-white text-black px-4 py-4 flex flex-col gap-1">
             <h2 className="flex justify-between text-xs sm:text-xl"><span>{currentkey}</span></h2>
-            <span className='text-xs sm:text-xl'>{user[currentkey]}</span>
+            <span className='text-xs sm:text-xl font-semibold'>{user[currentkey] && `Rs.${user[currentkey]}`}</span>
+            <span>{user[currentkey] && (fees - user[currentkey]) > 0 && `Rs.${(fees - user[currentkey])}`}</span>
             {!user[currentkey] && <form onSubmit={handlefees} className="flex flex-col gap-1 sm:gap-2 " id="month">    
                 {!loading && <>
                   <input type="text" className="px-2 py-1 sm:px-4 sm:py-2 text-black border border-black w-full text-xs sm:text-xl" placeholder={fees} name="amount" value={amount} onChange={(e)=> setAmount(e.target.value)}  required />
