@@ -19,8 +19,8 @@ export const AddUser = () => {
 
   return (
     <>
-      {!form && <div className="fixed right-4 bottom-16 sm:bottom-8">
-        <button onClick={openUserForm} className="flex items-center  gap-1 bg-gray-800 px-4 py-2 hover:border hover:border-blue-600 active:focus:border-white">
+      {!form && <div className="sticky bottom-0 sm:fixed  sm:right-8 sm:bottom-8  mx-4 my-2">
+        <button onClick={openUserForm} className="text-right w-full sm:w-auto flex items-center  gap-1 bg-gray-800 px-4 py-2 hover:border hover:border-blue-600 active:focus:border-white">
           <span className="text-2xl">+</span>
           <span>ADD USER</span>
         </button>

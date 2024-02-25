@@ -2,6 +2,8 @@
 
 import { useRouter } from "next/navigation";
 
+import { Card ,CardHeader,CardContent ,CardDescription,CardTitle, CardFooter} from "./ui/card";
+
 export const User = ({ user }) => {
 
     const { rollno, name, gender, fees, year } = user;
@@ -9,17 +11,28 @@ export const User = ({ user }) => {
     const router = useRouter();
     
     return (
-        <>
-            <div className="grid grid-cols-3 bg-black text-white font-semibold tracking-widest border border-white">
-                <span className="col-span-1 bg-red-600 p-4 text-center ">{rollno}.</span>
-                <span className="col-span-2 bg-green-600  p-4  text-center ">{name}</span>
-                <span className="col-span-1 bg-white  text-black p-4 text-center">{gender}</span>
-                <span className="col-span-2 bg-red-600 p-4  text-center">{`Rs.${fees}`}</span>
-                <span className="col-span-2 bg-green-600 p-4  text-center">{year}</span>
+        
+        <Card  className="rounded-none">
+
+             <div className="flex justify-between bg-green-600 text-white">
+             <CardHeader>
+                    <CardTitle>{rollno}.</CardTitle>
+                    <CardTitle className="flex flex-col justify-center items-start">
+                        <CardDescription className="text-white text-xl sm:text-2xl">{name}</CardDescription>
+                     <CardDescription className="bg-red-600 p-1 text-white">{gender}</CardDescription>
+                     </CardTitle>
+                </CardHeader>
+                <CardFooter>
                 <span className="col-span-1 bg-black p-4  flex justify-center items-center cursor-pointer" onClick={()=> router.push(`/user/${rollno}/${year}`)} > <img src="/ForwardButton.png" alt="arrow" className="w-[32px] h-full" /> </span>
-            </div>
-           
-        </>
+                </CardFooter>
+             </div>
+             <CardContent className="flex justify-between px-4 py-2 text-xl font-semibold">
+                <span >Rs.{fees}</span>
+                <span>{year}</span>
+             </CardContent>
+               
+            </Card>
+      
     )
 
 

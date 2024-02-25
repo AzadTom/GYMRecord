@@ -1,13 +1,10 @@
 import React from 'react'
+import { ButtonLoading } from '@/components/ui/loadingbutton';
 
 function loading() {
   return (
     <div className='flex justify-center items-center w-full h-screen'>
-
-       <div>
-         <img src="/loader1.gif" alt="loader"  />
-        </div> 
-        
+       <ButtonLoading/>        
     </div>
   )
 }

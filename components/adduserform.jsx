@@ -12,15 +12,18 @@ export const AddUserForm = ({openUserForm}) => {
 
         e.preventDefault();
 
+        try {
+
+            
         setLoading(true);
 
         const form = document.querySelector("#insert");
 
         const data  = new FormData(form);
         
-        const response  = await fetch("https://script.google.com/macros/s/AKfycbyng9K1MdNcUgzjGwvB4njKPKAIsxHoiqVPnLgkm7EM3LMr89s1k0wCkRjbCZR_PXWz/exec",{
+        const response  = await fetch("https://script.google.com/macros/s/AKfycbyEW1ZrwM30iKhEuzc8ihaC5kvc64RzcbAPo1jRJkPaBhqW89ABrlDWvQKrI8NxujBv/exec",{
             method:"POST",
-            body:data
+            body:data,
         });
 
         if(response.ok)
@@ -35,6 +38,11 @@ export const AddUserForm = ({openUserForm}) => {
         {
             console.log("data insertion is failed!");
 
+        }
+            
+        } catch (error) {
+            
+            console.log(error.message);
         }
 
     }
